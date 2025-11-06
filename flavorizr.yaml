@@ -1,0 +1,22 @@
+flavors:
+  dev:
+    app:
+      name: "[DEV] Amigo Secreto"
+
+    android:
+      flavorDimensions: "flavor-type"
+      applicationId: "br.com.siegatech.secretsanta.dev"
+    ios:
+      schema: true
+      bundleId: "br.com.siegatech.secretsanta.dev"
+
+  prod:
+    app:
+      name: "Amigo Secreto"
+
+    android:
+      flavorDimensions: "flavor-type"
+      applicationId: "br.com.siegatech.secretsanta"
+    ios:
+      schema: true
+      bundleId: "br.com.siegatech.secretsanta"

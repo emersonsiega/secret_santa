@@ -1,0 +1,38 @@
+name: secret_santa
+description: "A new Flutter project."
+publish_to: "none"
+version: 0.1.0
+
+environment:
+  sdk: ^3.9.2
+
+dependencies:
+  flutter:
+    sdk: flutter
+  flutter_localizations:
+    sdk: flutter
+
+  slang: ^4.9.2
+  slang_flutter: ^4.9.0
+  flutter_dotenv: ^6.0.0
+  logger: ^2.6.2
+  intl: ^0.20.2
+  freezed_annotation: ^3.1.0
+  json_annotation: ^4.9.0
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+  flutter_lints: ^5.0.0
+  flutter_flavorizr: ^2.4.1
+  build_runner: ^2.10.1
+  slang_build_runner: ^4.9.0
+  freezed: ^3.2.3
+  json_serializable: ^6.11.1
+
+flutter:
+  uses-material-design: true
+
+  assets:
+    - .env/.env-dev
+    - .env/.env-prod
