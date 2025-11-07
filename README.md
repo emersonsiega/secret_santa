@@ -7,8 +7,8 @@ A new Flutter project.
 - [x] Environments/Flavors
 - [x] Logger
 - [x] i18n
-- [X] Freezed
-- [ ] Go Router
+- [x] Freezed
+- [x] Go Router
 - [ ] Riverpod
 - [ ] Appwrite
 - [ ] Sentry
