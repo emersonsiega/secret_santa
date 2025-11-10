@@ -20,6 +20,8 @@ dependencies:
   freezed_annotation: ^3.1.0
   json_annotation: ^4.9.0
   go_router: ^17.0.0
+  flutter_riverpod: ^3.0.3
+  riverpod_annotation: ^3.0.3
 
 dev_dependencies:
   flutter_test:
@@ -30,6 +32,11 @@ dev_dependencies:
   slang_build_runner: ^4.9.0
   freezed: ^3.2.3
   json_serializable: ^6.11.1
+  custom_lint: ^0.8.1
+  riverpod_generator: ^3.0.3
+
+dependency_overrides:
+  analyzer: any
 
 flutter:
   uses-material-design: true

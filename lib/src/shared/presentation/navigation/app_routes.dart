@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 
 import 'package:go_router/go_router.dart';
 import 'package:secret_santa/src/features/history/screens/history_screen.dart';
-import 'package:secret_santa/src/features/onboarding/presentation/screens/onboarding_screen.dart';
+import 'package:secret_santa/src/features/onboarding/presentation/screens/onboarding/onboarding_screen.dart';
 
 final appRouter = GoRouter(
   debugLogDiagnostics: true,

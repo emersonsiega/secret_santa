@@ -292,8 +292,9 @@ class CustomPrinter extends LogPrinter {
     }
 
     final emoji = _getEmoji(level);
+    final prefix = '$emoji -> $timeStr';
     for (final line in message.split('\n')) {
-      buffer.add(color('$emoji -> $timeStr$line'));
+      buffer.add(color('$prefix$line'));
     }
 
     if (error != null) {

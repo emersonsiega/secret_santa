@@ -9,7 +9,7 @@ A new Flutter project.
 - [x] i18n
 - [x] Freezed
 - [x] Go Router
-- [ ] Riverpod
+- [x] Riverpod
 - [ ] Appwrite
 - [ ] Sentry
 - [ ] Hive
