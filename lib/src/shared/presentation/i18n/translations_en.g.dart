@@ -37,6 +37,19 @@ class TranslationsEn implements Translations {
 
 	// Translations
 	@override String get appName => 'Secret Santa';
+	@override late final _TranslationsSplashEn splash = _TranslationsSplashEn._(_root);
+	@override String get genericError => 'Something went wrong with your request. Review your data and try again.';
+	@override String get invalidRequest => 'You\'ve entered an invalid value. Review your data and try again.';
+}
+
+// Path: splash
+class _TranslationsSplashEn implements TranslationsSplashPt {
+	_TranslationsSplashEn._(this._root);
+
+	final TranslationsEn _root; // ignore: unused_field
+
+	// Translations
+	@override String get title => 'Wait while we set up your App';
 }
 
 /// The flat map containing all translations for locale <en>.
@@ -52,6 +65,9 @@ extension on TranslationsEn {
 	dynamic _flatMapFunction$0(String path) {
 		switch (path) {
 			case 'appName': return 'Secret Santa';
+			case 'splash.title': return 'Wait while we set up your App';
+			case 'genericError': return 'Something went wrong with your request. Review your data and try again.';
+			case 'invalidRequest': return 'You\'ve entered an invalid value. Review your data and try again.';
 			default: return null;
 		}
 	}

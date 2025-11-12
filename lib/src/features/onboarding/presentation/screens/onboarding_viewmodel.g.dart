@@ -13,7 +13,7 @@ part of 'onboarding_viewmodel.dart';
 const onboardingViewModelProvider = OnboardingViewModelProvider._();
 
 final class OnboardingViewModelProvider
-    extends $NotifierProvider<OnboardingViewModel, OnboardingState> {
+    extends $AsyncNotifierProvider<OnboardingViewModel, OnboardingState> {
   const OnboardingViewModelProvider._()
     : super(
         from: null,
@@ -21,9 +21,16 @@ final class OnboardingViewModelProvider
         retry: null,
         name: r'onboardingViewModelProvider',
         isAutoDispose: true,
-        dependencies: null,
-        $allTransitiveDependencies: null,
+        dependencies: const <ProviderOrFamily>[authRepositoryProvider],
+        $allTransitiveDependencies: const <ProviderOrFamily>[
+          OnboardingViewModelProvider.$allTransitiveDependencies0,
+          OnboardingViewModelProvider.$allTransitiveDependencies1,
+        ],
       );
+
+  static const $allTransitiveDependencies0 = authRepositoryProvider;
+  static const $allTransitiveDependencies1 =
+      AuthRepositoryProvider.$allTransitiveDependencies0;
 
   @override
   String debugGetCreateSourceHash() => _$onboardingViewModelHash();
@@ -31,31 +38,23 @@ final class OnboardingViewModelProvider
   @$internal
   @override
   OnboardingViewModel create() => OnboardingViewModel();
-
-  /// {@macro riverpod.override_with_value}
-  Override overrideWithValue(OnboardingState value) {
-    return $ProviderOverride(
-      origin: this,
-      providerOverride: $SyncValueProvider<OnboardingState>(value),
-    );
-  }
 }
 
 String _$onboardingViewModelHash() =>
-    r'ae571b0d4a07c90a1e79615c5ba4484fbf145f24';
+    r'7c50f61c4839239c1f819778e20f67b1ceea7c29';
 
-abstract class _$OnboardingViewModel extends $Notifier<OnboardingState> {
-  OnboardingState build();
+abstract class _$OnboardingViewModel extends $AsyncNotifier<OnboardingState> {
+  FutureOr<OnboardingState> build();
   @$mustCallSuper
   @override
   void runBuild() {
     final created = build();
-    final ref = this.ref as $Ref<OnboardingState, OnboardingState>;
+    final ref = this.ref as $Ref<AsyncValue<OnboardingState>, OnboardingState>;
     final element =
         ref.element
             as $ClassProviderElement<
-              AnyNotifier<OnboardingState, OnboardingState>,
-              OnboardingState,
+              AnyNotifier<AsyncValue<OnboardingState>, OnboardingState>,
+              AsyncValue<OnboardingState>,
               Object?,
               Object?
             >;

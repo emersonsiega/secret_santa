@@ -13,11 +13,9 @@ T _$identity<T>(T value) => value;
 
 /// @nodoc
 mixin _$OnboardingState {
-  String get text;
-
   @override
   String toString() {
-    return 'OnboardingState(text: $text)';
+    return 'OnboardingState()';
   }
 }
 
@@ -37,13 +35,19 @@ extension OnboardingStatePatterns on OnboardingState {
 
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>(
-    TResult Function(_OnboardingState value)? $default, {
+    TResult Function(InitialOnboardingState value)? $default, {
+    TResult Function(SmsSentState value)? smsSent,
+    TResult Function(UserLoggedIn value)? loggedIn,
     required TResult orElse(),
   }) {
     final _that = this;
     switch (_that) {
-      case _OnboardingState() when $default != null:
+      case InitialOnboardingState() when $default != null:
         return $default(_that);
+      case SmsSentState() when smsSent != null:
+        return smsSent(_that);
+      case UserLoggedIn() when loggedIn != null:
+        return loggedIn(_that);
       case _:
         return orElse();
     }
@@ -64,14 +68,18 @@ extension OnboardingStatePatterns on OnboardingState {
 
   @optionalTypeArgs
   TResult map<TResult extends Object?>(
-    TResult Function(_OnboardingState value) $default,
-  ) {
+    TResult Function(InitialOnboardingState value) $default, {
+    required TResult Function(SmsSentState value) smsSent,
+    required TResult Function(UserLoggedIn value) loggedIn,
+  }) {
     final _that = this;
     switch (_that) {
-      case _OnboardingState():
+      case InitialOnboardingState():
         return $default(_that);
-      case _:
-        throw StateError('Unexpected subclass');
+      case SmsSentState():
+        return smsSent(_that);
+      case UserLoggedIn():
+        return loggedIn(_that);
     }
   }
 
@@ -89,12 +97,18 @@ extension OnboardingStatePatterns on OnboardingState {
 
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>(
-    TResult? Function(_OnboardingState value)? $default,
-  ) {
+    TResult? Function(InitialOnboardingState value)? $default, {
+    TResult? Function(SmsSentState value)? smsSent,
+    TResult? Function(UserLoggedIn value)? loggedIn,
+  }) {
     final _that = this;
     switch (_that) {
-      case _OnboardingState() when $default != null:
+      case InitialOnboardingState() when $default != null:
         return $default(_that);
+      case SmsSentState() when smsSent != null:
+        return smsSent(_that);
+      case UserLoggedIn() when loggedIn != null:
+        return loggedIn(_that);
       case _:
         return null;
     }
@@ -114,13 +128,19 @@ extension OnboardingStatePatterns on OnboardingState {
 
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>(
-    TResult Function(String text)? $default, {
+    TResult Function()? $default, {
+    TResult Function(User user)? smsSent,
+    TResult Function(User user)? loggedIn,
     required TResult orElse(),
   }) {
     final _that = this;
     switch (_that) {
-      case _OnboardingState() when $default != null:
-        return $default(_that.text);
+      case InitialOnboardingState() when $default != null:
+        return $default();
+      case SmsSentState() when smsSent != null:
+        return smsSent(_that.user);
+      case UserLoggedIn() when loggedIn != null:
+        return loggedIn(_that.user);
       case _:
         return orElse();
     }
@@ -141,14 +161,18 @@ extension OnboardingStatePatterns on OnboardingState {
 
   @optionalTypeArgs
   TResult when<TResult extends Object?>(
-    TResult Function(String text) $default,
-  ) {
+    TResult Function() $default, {
+    required TResult Function(User user) smsSent,
+    required TResult Function(User user) loggedIn,
+  }) {
     final _that = this;
     switch (_that) {
-      case _OnboardingState():
-        return $default(_that.text);
-      case _:
-        throw StateError('Unexpected subclass');
+      case InitialOnboardingState():
+        return $default();
+      case SmsSentState():
+        return smsSent(_that.user);
+      case UserLoggedIn():
+        return loggedIn(_that.user);
     }
   }
 
@@ -166,12 +190,18 @@ extension OnboardingStatePatterns on OnboardingState {
 
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>(
-    TResult? Function(String text)? $default,
-  ) {
+    TResult? Function()? $default, {
+    TResult? Function(User user)? smsSent,
+    TResult? Function(User user)? loggedIn,
+  }) {
     final _that = this;
     switch (_that) {
-      case _OnboardingState() when $default != null:
-        return $default(_that.text);
+      case InitialOnboardingState() when $default != null:
+        return $default();
+      case SmsSentState() when smsSent != null:
+        return smsSent(_that.user);
+      case UserLoggedIn() when loggedIn != null:
+        return loggedIn(_that.user);
       case _:
         return null;
     }
@@ -180,15 +210,37 @@ extension OnboardingStatePatterns on OnboardingState {
 
 /// @nodoc
 
-class _OnboardingState extends OnboardingState {
-  _OnboardingState({this.text = 'Riverpod set up'}) : super._();
-
-  @override
-  @JsonKey()
-  final String text;
+class InitialOnboardingState extends OnboardingState {
+  InitialOnboardingState() : super._();
 
   @override
   String toString() {
-    return 'OnboardingState(text: $text)';
+    return 'OnboardingState()';
+  }
+}
+
+/// @nodoc
+
+class SmsSentState extends OnboardingState {
+  SmsSentState({required this.user}) : super._();
+
+  final User user;
+
+  @override
+  String toString() {
+    return 'OnboardingState.smsSent(user: $user)';
+  }
+}
+
+/// @nodoc
+
+class UserLoggedIn extends OnboardingState {
+  UserLoggedIn({required this.user}) : super._();
+
+  final User user;
+
+  @override
+  String toString() {
+    return 'OnboardingState.loggedIn(user: $user)';
   }
 }

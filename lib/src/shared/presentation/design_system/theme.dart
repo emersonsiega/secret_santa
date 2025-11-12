@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 
 import 'package:secret_santa/src/shared/presentation/design_system/colors.dart';
 
@@ -15,6 +16,11 @@ ThemeData buildTheme() {
       onError: AppColors.lightText,
       surface: AppColors.background.shade100,
       onSurface: AppColors.darkText,
+    ),
+    appBarTheme: AppBarTheme(
+      elevation: 0,
+      backgroundColor: Colors.transparent,
+      systemOverlayStyle: SystemUiOverlayStyle.dark,
     ),
   );
 }

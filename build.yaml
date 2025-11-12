@@ -10,6 +10,7 @@ targets:
           output_file_name: translations.g.dart
           namespaces: false
           string_interpolation: braces
+          generate_enum: false
       freezed:
         options:
           # Tells Freezed to format .freezed.dart files.

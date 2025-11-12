@@ -10,7 +10,6 @@ A new Flutter project.
 - [x] Freezed
 - [x] Go Router
 - [x] Riverpod
-- [ ] Appwrite
+- [X] Appwrite
 - [ ] Sentry
-- [ ] Hive
 - [ ] App Icons/Name

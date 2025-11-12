@@ -42,6 +42,26 @@ class Translations implements BaseTranslations<AppLocale, Translations> {
 
 	/// pt: 'Amigo Secreto'
 	String get appName => 'Amigo Secreto';
+
+	late final TranslationsSplashPt splash = TranslationsSplashPt._(_root);
+
+	/// pt: 'Ocorreu um problema com sua solicitação. Revise seus dados e tente novamente.'
+	String get genericError => 'Ocorreu um problema com sua solicitação. Revise seus dados e tente novamente.';
+
+	/// pt: 'Você inseriu um valor inválido. Revise seus dados e tente novamente.'
+	String get invalidRequest => 'Você inseriu um valor inválido. Revise seus dados e tente novamente.';
+}
+
+// Path: splash
+class TranslationsSplashPt {
+	TranslationsSplashPt._(this._root);
+
+	final Translations _root; // ignore: unused_field
+
+	// Translations
+
+	/// pt: 'Aguarde enquanto configuramos seu App'
+	String get title => 'Aguarde enquanto configuramos seu App';
 }
 
 /// The flat map containing all translations for locale <pt>.
@@ -57,6 +77,9 @@ extension on Translations {
 	dynamic _flatMapFunction$0(String path) {
 		switch (path) {
 			case 'appName': return 'Amigo Secreto';
+			case 'splash.title': return 'Aguarde enquanto configuramos seu App';
+			case 'genericError': return 'Ocorreu um problema com sua solicitação. Revise seus dados e tente novamente.';
+			case 'invalidRequest': return 'Você inseriu um valor inválido. Revise seus dados e tente novamente.';
 			default: return null;
 		}
 	}

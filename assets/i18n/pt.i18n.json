@@ -1,3 +1,8 @@
 {
-  "appName": "Amigo Secreto"
+  "appName": "Amigo Secreto",
+  "splash": {
+    "title": "Aguarde enquanto configuramos seu App"
+  },
+  "genericError": "Ocorreu um problema com sua solicitação. Revise seus dados e tente novamente.",
+  "invalidRequest": "Você inseriu um valor inválido. Revise seus dados e tente novamente."
 }

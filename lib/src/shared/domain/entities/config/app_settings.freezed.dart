@@ -13,24 +13,34 @@ T _$identity<T>(T value) => value;
 
 /// @nodoc
 mixin _$AppSettings {
-  String get foo;
+  String get appwriteProjectId;
+  String get appwriteProjectName;
+  String get appwriteProjectPublicEndpoint;
 
   @override
   String toString() {
-    return 'AppSettings(foo: $foo)';
+    return 'AppSettings(appwriteProjectId: $appwriteProjectId, appwriteProjectName: $appwriteProjectName, appwriteProjectPublicEndpoint: $appwriteProjectPublicEndpoint)';
   }
 }
 
 /// @nodoc
 
 class _AppSettings extends AppSettings {
-  const _AppSettings({required this.foo}) : super._();
+  const _AppSettings({
+    required this.appwriteProjectId,
+    required this.appwriteProjectName,
+    required this.appwriteProjectPublicEndpoint,
+  }) : super._();
 
   @override
-  final String foo;
+  final String appwriteProjectId;
+  @override
+  final String appwriteProjectName;
+  @override
+  final String appwriteProjectPublicEndpoint;
 
   @override
   String toString() {
-    return 'AppSettings._internal(foo: $foo)';
+    return 'AppSettings._internal(appwriteProjectId: $appwriteProjectId, appwriteProjectName: $appwriteProjectName, appwriteProjectPublicEndpoint: $appwriteProjectPublicEndpoint)';
   }
 }

@@ -19,7 +19,9 @@ abstract class AppSettings with _$AppSettings {
   }
 
   const factory AppSettings._internal({
-    required String foo,
+    required String appwriteProjectId,
+    required String appwriteProjectName,
+    required String appwriteProjectPublicEndpoint,
   }) = _AppSettings;
 
   static Future<void> init() async {
@@ -27,7 +29,9 @@ abstract class AppSettings with _$AppSettings {
 
     try {
       _instance = AppSettings._internal(
-        foo: dotenv.env['FOO']!,
+        appwriteProjectId: dotenv.env['APPWRITE_PROJECT_ID']!,
+        appwriteProjectName: dotenv.env['APPWRITE_PROJECT_NAME']!,
+        appwriteProjectPublicEndpoint: dotenv.env['APPWRITE_PUBLIC_ENDPOINT']!,
       );
     } catch (error, stack) {
       logger.e("Failed to load envs", error: error, stackTrace: stack);

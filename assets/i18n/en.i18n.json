@@ -1,3 +1,8 @@
 {
-  "appName": "Secret Santa"
+  "appName": "Secret Santa",
+  "splash": {
+    "title": "Wait while we set up your App"
+  },
+  "genericError": "Something went wrong with your request. Review your data and try again.",
+  "invalidRequest": "You've entered an invalid value. Review your data and try again."
 }

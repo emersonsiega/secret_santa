@@ -17,17 +17,22 @@ class MainApp extends StatelessWidget {
       observers: [
         _RiverpodLogger(),
       ],
-      child: MaterialApp.router(
-        routerConfig: appRouter,
-        theme: buildTheme(),
-        title: F.title,
-        debugShowCheckedModeBanner: false,
-        themeMode: ThemeMode.light,
-        supportedLocales: AppLocaleUtils.supportedLocales,
-        localizationsDelegates: const [
-          GlobalMaterialLocalizations.delegate,
-          GlobalWidgetsLocalizations.delegate,
-        ],
+      child: Consumer(
+        builder: (context, ref, child) {
+          return MaterialApp.router(
+            routerConfig: ref.watch(appRouterProvider),
+            theme: buildTheme(),
+            title: F.title,
+            debugShowCheckedModeBanner: false,
+            themeMode: ThemeMode.light,
+            supportedLocales: AppLocaleUtils.supportedLocales,
+            localizationsDelegates: const [
+              GlobalMaterialLocalizations.delegate,
+              GlobalWidgetsLocalizations.delegate,
+              GlobalCupertinoLocalizations.delegate,
+            ],
+          );
+        },
       ),
     );
   }
