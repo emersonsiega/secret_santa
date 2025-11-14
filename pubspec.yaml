@@ -4,7 +4,8 @@ publish_to: "none"
 version: 0.1.0
 
 environment:
-  sdk: ^3.9.2
+  sdk: ^3.10.0
+  flutter: ">=3.38.0 <4.0.0"
 
 dependencies:
   flutter:
@@ -24,6 +25,11 @@ dependencies:
   riverpod_annotation: ^3.0.3
   appwrite: ^20.3.0
   dart_either: ^2.0.0
+  flutter_svg: ^2.2.2
+  font_awesome_flutter: ^10.12.0
+  reactive_forms: ^18.1.1
+  reactive_phone_form_field: ^5.0.2
+  devicelocale: ^0.8.2
 
 dev_dependencies:
   flutter_test:
@@ -44,5 +50,6 @@ flutter:
   uses-material-design: true
 
   assets:
+    - assets/images/
     - .env/.env-dev
     - .env/.env-prod

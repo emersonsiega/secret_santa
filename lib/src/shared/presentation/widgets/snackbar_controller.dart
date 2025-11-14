@@ -51,11 +51,11 @@ class SnackbarController {
       content: Text(message, style: textStyle),
       duration: duration,
       backgroundColor: backgroundColor,
-      behavior: SnackBarBehavior.floating,
-      margin: EdgeInsets.all(16),
+      behavior: .floating,
+      margin: .all(16),
       showCloseIcon: true,
       closeIconColor: textStyle?.color,
-      shape: RoundedRectangleBorder(borderRadius: BorderRadiusGeometry.circular(6)),
+      shape: RoundedRectangleBorder(borderRadius: .circular(6)),
     );
 
     _snackBarController = ScaffoldMessenger.of(context).showSnackBar(snackBar);

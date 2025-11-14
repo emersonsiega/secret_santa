@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:reactive_forms/reactive_forms.dart';
+import 'package:reactive_phone_form_field/reactive_phone_form_field.dart';
 import 'package:secret_santa/src/shared/domain/entities/config/flavors.dart';
 import 'package:secret_santa/src/shared/infra/logger/logger.dart';
 import 'package:secret_santa/src/shared/presentation/design_system/theme.dart';
@@ -30,7 +32,19 @@ class MainApp extends StatelessWidget {
               GlobalMaterialLocalizations.delegate,
               GlobalWidgetsLocalizations.delegate,
               GlobalCupertinoLocalizations.delegate,
+              ...PhoneFieldLocalization.delegates,
             ],
+            builder: (context, child) => ReactiveFormConfig(
+              validationMessages: {
+                ValidationMessage.required: (_) => t.formValidations.required,
+                ValidationMessage.minLength: (value) =>
+                    t.formValidations.minLength(value: (value as Map)['requiredLength']),
+                ValidationMessage.maxLength: (value) =>
+                    t.formValidations.maxLength(value: (value as Map)['requiredLength']),
+                ...PhoneValidationMessage.localizedValidationMessages(context),
+              },
+              child: child!,
+            ),
           );
         },
       ),

@@ -5,10 +5,10 @@ flavors:
 
     android:
       flavorDimensions: "flavor-type"
-      applicationId: "br.com.siegatech.secretsanta.dev"
+      applicationId: "br.com.siegatech.secretsantaapp.dev"
     ios:
       schema: true
-      bundleId: "br.com.siegatech.secretsanta.dev"
+      bundleId: "br.com.siegatech.secretsantaapp.dev"
 
   prod:
     app:
@@ -16,7 +16,7 @@ flavors:
 
     android:
       flavorDimensions: "flavor-type"
-      applicationId: "br.com.siegatech.secretsanta"
+      applicationId: "br.com.siegatech.secretsantaapp"
     ios:
       schema: true
-      bundleId: "br.com.siegatech.secretsanta"
+      bundleId: "br.com.siegatech.secretsantaapp"

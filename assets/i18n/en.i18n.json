@@ -1,8 +1,44 @@
 {
   "appName": "Secret Santa",
+  "genericError": "Something went wrong with your request. Review your data and try again.",
+  "invalidRequest": "You've entered an invalid value. Review your data and try again.",
   "splash": {
     "title": "Wait while we set up your App"
   },
-  "genericError": "Something went wrong with your request. Review your data and try again.",
-  "invalidRequest": "You've entered an invalid value. Review your data and try again."
+  "onboarding": {
+    "intro": {
+      "title": "Welcome",
+      "subtitle": "Create your Secret Santa group quickly and easily. Add friends and family directly from your contacts!",
+      "startLabel": "Start"
+    },
+    "createAccount": {
+      "title": "Create account",
+      "name": "Name",
+      "country": "Country",
+      "phone": "Phone number",
+      "phoneHelperText": "You will receive an SMS to validate your access.",
+      "registerLabel": "Register",
+      "alreadyRegistered": "I already have an account"
+    },
+    "login": {
+      "title": "Log in",
+      "create": "Create account",
+      "country": "Country",
+      "phone": "Phone number",
+      "phoneHelperText": "You will receive an SMS to validate your access."
+    },
+    "validation": {
+      "title": "Confirm access token",
+      "code": "Token",
+      "codeHelperText": "Token sent via SMS",
+      "resendLabel": "Resend",
+      "confirm": "Confirm"
+    }
+  },
+  "formValidations": {
+    "required": "This field must not be empty",
+    "fullName": "Enter your full name",
+    "minLength": "Enter at least {value} characters",
+    "maxLength": "Enter no more than {value} characters"
+  }
 }

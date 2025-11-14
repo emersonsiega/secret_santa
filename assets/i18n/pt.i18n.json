@@ -1,8 +1,44 @@
 {
   "appName": "Amigo Secreto",
+  "genericError": "Ocorreu um problema com sua solicitação. Revise seus dados e tente novamente.",
+  "invalidRequest": "Você inseriu um valor inválido. Revise seus dados e tente novamente.",
   "splash": {
     "title": "Aguarde enquanto configuramos seu App"
   },
-  "genericError": "Ocorreu um problema com sua solicitação. Revise seus dados e tente novamente.",
-  "invalidRequest": "Você inseriu um valor inválido. Revise seus dados e tente novamente."
+  "onboarding": {
+    "intro": {
+      "title": "Seja bem-vindo",
+      "subtitle": "Crie seu grupo de amigo secreto de maneira rápida e fácil. Adicione amigos e familiares diretamente de seus contatos!",
+      "startLabel": "Começar"
+    },
+    "createAccount": {
+      "title": "Crie sua conta",
+      "name": "Nome",
+      "country": "País",
+      "phone": "Número de telefone",
+      "phoneHelperText": "Você receberá um SMS para validar o acesso.",
+      "registerLabel": "Registrar-se",
+      "alreadyRegistered": "Já tenho uma conta"
+    },
+    "login": {
+      "title": "Entrar",
+      "create": "Criar conta",
+      "country": "País",
+      "phone": "Número de telefone",
+      "phoneHelperText": "Você receberá um SMS para validar o acesso."
+    },
+    "validation": {
+      "title": "Confirmar código de acesso",
+      "code": "Código",
+      "codeHelperText": "Código enviado via SMS",
+      "resendLabel": "Reenviar código",
+      "confirm": "Confirmar"
+    }
+  },
+  "formValidations": {
+    "required": "Esse campo não pode estar vazio",
+    "fullName": "Insira nome e sobrenome",
+    "minLength": "Insira no mínimo {value} caracteres",
+    "maxLength": "Insira no máximo {value} caracteres"
+  }
 }

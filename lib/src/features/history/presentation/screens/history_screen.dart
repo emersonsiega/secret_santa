@@ -12,7 +12,7 @@ class HistoryScreen extends ConsumerWidget {
       appBar: AppBar(),
       body: Center(
         child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
+          mainAxisAlignment: .center,
           children: [
             Text('History screen'),
             ElevatedButton(

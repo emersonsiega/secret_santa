@@ -58,13 +58,30 @@ class AuthRepository extends _$AuthRepository implements IAuthRepository {
   }
 
   @override
-  Future<Either<AsyncRequestFailure, User>> loginWithSMSCode(User user, String secret) async {
+  Future<Either<AsyncRequestFailure, void>> logInWithPhoneNumber(User user) async {
+    try {
+      await _client.account.createPhoneToken(
+        userId: user.buildUniqueId,
+        phone: user.rawPhoneNumber,
+      );
+      return null.right();
+    } catch (e) {
+      logger.e('Failed to create phone token', error: e);
+
+      if (e is appwrite.AppwriteException) return Left(e.toEntity());
+
+      return Left(AsyncRequestFailure.unknown());
+    }
+  }
+
+  @override
+  Future<Either<AsyncRequestFailure, User?>> validateSMSCode(User user, String secret) async {
     try {
       await _client.account.createSession(userId: user.buildUniqueId, secret: secret);
-      final currentUser = await _client.account.updateName(name: user.name);
-      final entity = UserModel.fromJson(currentUser.toMap()).toEntity();
-      state = AsyncData(entity);
-      return entity.right();
+
+      final usr = (await this.user);
+      state = AsyncData(usr.fold(ifLeft: (_) => null, ifRight: (user) => user));
+      return usr;
     } catch (e) {
       logger.e('Failed to log in with sms code', error: e);
       if (e is appwrite.AppwriteException) return Left(e.toEntity());
@@ -81,6 +98,20 @@ class AuthRepository extends _$AuthRepository implements IAuthRepository {
       return null.right();
     } catch (e) {
       logger.e('Failed to log out', error: e);
+      if (e is appwrite.AppwriteException) return Left(e.toEntity());
+
+      return Left(AsyncRequestFailure.unknown());
+    }
+  }
+
+  @override
+  Future<Either<AsyncRequestFailure, void>> updateName(User user) async {
+    try {
+      final currentUser = await _client.account.updateName(name: user.name);
+      final entity = UserModel.fromJson(currentUser.toMap()).toEntity();
+      state = AsyncData(entity);
+      return entity.right();
+    } catch (e) {
       if (e is appwrite.AppwriteException) return Left(e.toEntity());
 
       return Left(AsyncRequestFailure.unknown());
