@@ -116,6 +116,9 @@ class TranslationsOnboardingIntroPt {
 
 	/// pt: 'Começar'
 	String get startLabel => 'Começar';
+
+	/// pt: 'Não quero me cadastrar'
+	String get startAnonymousLabel => 'Não quero me cadastrar';
 }
 
 // Path: onboarding.createAccount
@@ -215,6 +218,7 @@ extension on Translations {
 			case 'onboarding.intro.title': return 'Seja bem-vindo';
 			case 'onboarding.intro.subtitle': return 'Crie seu grupo de amigo secreto de maneira rápida e fácil. Adicione amigos e familiares diretamente de seus contatos!';
 			case 'onboarding.intro.startLabel': return 'Começar';
+			case 'onboarding.intro.startAnonymousLabel': return 'Não quero me cadastrar';
 			case 'onboarding.createAccount.title': return 'Crie sua conta';
 			case 'onboarding.createAccount.name': return 'Nome';
 			case 'onboarding.createAccount.country': return 'País';

@@ -20,6 +20,13 @@ class _IntroView extends ConsumerWidget {
           style: context.textTheme.bodyLarge?.merge(style),
         ),
         Spacer(),
+        LargeTextButton(
+          label: t.onboarding.intro.startAnonymousLabel,
+          icon: FontAwesomeIcons.share,
+          onPressed: () {
+            ref.read(onboardingViewModelProvider.notifier).continueWithoutAccount();
+          },
+        ),
         LargeElevatedButton(
           label: t.onboarding.intro.startLabel,
           icon: FontAwesomeIcons.gift,

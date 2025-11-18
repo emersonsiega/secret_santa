@@ -98,7 +98,9 @@ class __SMSCodeValidationViewState extends ConsumerState<_SMSCodeValidationView>
                       icon: FontAwesomeIcons.rotateLeft,
                       onPressed: value == 0
                           ? () {
-                              if (ref.read(onboardingViewModelProvider).value case SmsSentState(:final user)) {
+                              if (ref.read(onboardingViewModelProvider).value case SmsSentState(
+                                :final user,
+                              ) when user is RegularUser) {
                                 form.reset();
                                 ref.read(onboardingViewModelProvider.notifier).logInWithPhoneNumber(user.phoneNumber);
                                 _startResendTimer();

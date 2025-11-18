@@ -9,7 +9,8 @@
     "intro": {
       "title": "Welcome",
       "subtitle": "Create your Secret Santa group quickly and easily. Add friends and family directly from your contacts!",
-      "startLabel": "Start"
+      "startLabel": "Start",
+      "startAnonymousLabel": "Start without account"
     },
     "createAccount": {
       "title": "Create account",

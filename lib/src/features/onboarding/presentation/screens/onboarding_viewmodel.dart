@@ -18,6 +18,13 @@ class OnboardingViewModel extends _$OnboardingViewModel {
     state = AsyncData(OnboardingState());
   }
 
+  Future continueWithoutAccount() async {
+    state = AsyncLoading<OnboardingState>();
+    final user = User.anonymous();
+    await _authRepository.registerAnonymousUser(user);
+    state = AsyncData(OnboardingState.loggedIn(user: user));
+  }
+
   Future createAccount(String name, String phoneNumber) async {
     state = AsyncLoading<OnboardingState>();
 
@@ -41,7 +48,7 @@ class OnboardingViewModel extends _$OnboardingViewModel {
   }
 
   Future validate(String smsCode) async {
-    if (state.value case SmsSentState(:final user)) {
+    if (state.value case SmsSentState(:final user) when user is RegularUser) {
       state = AsyncLoading<OnboardingState>();
 
       final response = await _authRepository.validateSMSCode(user, smsCode);

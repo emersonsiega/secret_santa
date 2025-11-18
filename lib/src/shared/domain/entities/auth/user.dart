@@ -10,8 +10,21 @@ sealed class User with _$User {
     String? id,
     @Default('') String name,
     required String phoneNumber,
-  }) = _User;
+  }) = RegularUser;
 
-  String get buildUniqueId => phoneNumber.replaceAll(RegExp(r'[^\d]'), '');
-  String get rawPhoneNumber => phoneNumber.replaceAll(RegExp(r'[^+\d]'), '');
+  factory User.anonymous() = AnonymousUser;
+
+  String get buildUniqueId {
+    if (this case RegularUser(:final phoneNumber)) {
+      phoneNumber.replaceAll(RegExp(r'[^\d]'), '');
+    }
+    return '';
+  }
+
+  String get rawPhoneNumber {
+    if (this case RegularUser(:final phoneNumber)) {
+      phoneNumber.replaceAll(RegExp(r'[^+\d]'), '');
+    }
+    return '';
+  }
 }

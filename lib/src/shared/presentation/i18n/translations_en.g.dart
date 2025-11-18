@@ -90,6 +90,7 @@ class _TranslationsOnboardingIntroEn implements TranslationsOnboardingIntroPt {
 	@override String get title => 'Welcome';
 	@override String get subtitle => 'Create your Secret Santa group quickly and easily. Add friends and family directly from your contacts!';
 	@override String get startLabel => 'Start';
+	@override String get startAnonymousLabel => 'Start without account';
 }
 
 // Path: onboarding.createAccount
@@ -155,6 +156,7 @@ extension on TranslationsEn {
 			case 'onboarding.intro.title': return 'Welcome';
 			case 'onboarding.intro.subtitle': return 'Create your Secret Santa group quickly and easily. Add friends and family directly from your contacts!';
 			case 'onboarding.intro.startLabel': return 'Start';
+			case 'onboarding.intro.startAnonymousLabel': return 'Start without account';
 			case 'onboarding.createAccount.title': return 'Create account';
 			case 'onboarding.createAccount.name': return 'Name';
 			case 'onboarding.createAccount.country': return 'Country';

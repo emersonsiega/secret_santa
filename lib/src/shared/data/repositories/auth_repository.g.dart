@@ -37,7 +37,7 @@ final class AuthRepositoryProvider
   AuthRepository create() => AuthRepository();
 }
 
-String _$authRepositoryHash() => r'f8d2b5c211d48403d8e7f53713951da3f2eaeb0f';
+String _$authRepositoryHash() => r'5dc8a6e875a8832b2311296410195374e882afe3';
 
 abstract class _$AuthRepository extends $AsyncNotifier<User?> {
   FutureOr<User?> build();

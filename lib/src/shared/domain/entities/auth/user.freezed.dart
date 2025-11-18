@@ -13,64 +13,15 @@ T _$identity<T>(T value) => value;
 
 /// @nodoc
 mixin _$User {
-  String? get id;
-  String get name;
-  String get phoneNumber;
-
-  /// Create a copy of User
-  /// with the given fields replaced by the non-null parameter values.
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  @pragma('vm:prefer-inline')
-  $UserCopyWith<User> get copyWith =>
-      _$UserCopyWithImpl<User>(this as User, _$identity);
-
   @override
   String toString() {
-    return 'User(id: $id, name: $name, phoneNumber: $phoneNumber)';
+    return 'User()';
   }
 }
 
 /// @nodoc
-abstract mixin class $UserCopyWith<$Res> {
-  factory $UserCopyWith(User value, $Res Function(User) _then) =
-      _$UserCopyWithImpl;
-  @useResult
-  $Res call({String? id, String name, String phoneNumber});
-}
-
-/// @nodoc
-class _$UserCopyWithImpl<$Res> implements $UserCopyWith<$Res> {
-  _$UserCopyWithImpl(this._self, this._then);
-
-  final User _self;
-  final $Res Function(User) _then;
-
-  /// Create a copy of User
-  /// with the given fields replaced by the non-null parameter values.
-  @pragma('vm:prefer-inline')
-  @override
-  $Res call({
-    Object? id = freezed,
-    Object? name = null,
-    Object? phoneNumber = null,
-  }) {
-    return _then(
-      _self.copyWith(
-        id: freezed == id
-            ? _self.id
-            : id // ignore: cast_nullable_to_non_nullable
-                  as String?,
-        name: null == name
-            ? _self.name
-            : name // ignore: cast_nullable_to_non_nullable
-                  as String,
-        phoneNumber: null == phoneNumber
-            ? _self.phoneNumber
-            : phoneNumber // ignore: cast_nullable_to_non_nullable
-                  as String,
-      ),
-    );
-  }
+class $UserCopyWith<$Res> {
+  $UserCopyWith(User _, $Res Function(User) __);
 }
 
 /// Adds pattern-matching-related methods to [User].
@@ -89,13 +40,16 @@ extension UserPatterns on User {
 
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>(
-    TResult Function(_User value)? $default, {
+    TResult Function(RegularUser value)? $default, {
+    TResult Function(AnonymousUser value)? anonymous,
     required TResult orElse(),
   }) {
     final _that = this;
     switch (_that) {
-      case _User() when $default != null:
+      case RegularUser() when $default != null:
         return $default(_that);
+      case AnonymousUser() when anonymous != null:
+        return anonymous(_that);
       case _:
         return orElse();
     }
@@ -115,11 +69,16 @@ extension UserPatterns on User {
   /// ```
 
   @optionalTypeArgs
-  TResult map<TResult extends Object?>(TResult Function(_User value) $default) {
+  TResult map<TResult extends Object?>(
+    TResult Function(RegularUser value) $default, {
+    required TResult Function(AnonymousUser value) anonymous,
+  }) {
     final _that = this;
     switch (_that) {
-      case _User():
+      case RegularUser():
         return $default(_that);
+      case AnonymousUser():
+        return anonymous(_that);
     }
   }
 
@@ -137,12 +96,15 @@ extension UserPatterns on User {
 
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>(
-    TResult? Function(_User value)? $default,
-  ) {
+    TResult? Function(RegularUser value)? $default, {
+    TResult? Function(AnonymousUser value)? anonymous,
+  }) {
     final _that = this;
     switch (_that) {
-      case _User() when $default != null:
+      case RegularUser() when $default != null:
         return $default(_that);
+      case AnonymousUser() when anonymous != null:
+        return anonymous(_that);
       case _:
         return null;
     }
@@ -163,12 +125,15 @@ extension UserPatterns on User {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>(
     TResult Function(String? id, String name, String phoneNumber)? $default, {
+    TResult Function()? anonymous,
     required TResult orElse(),
   }) {
     final _that = this;
     switch (_that) {
-      case _User() when $default != null:
+      case RegularUser() when $default != null:
         return $default(_that.id, _that.name, _that.phoneNumber);
+      case AnonymousUser() when anonymous != null:
+        return anonymous();
       case _:
         return orElse();
     }
@@ -189,12 +154,15 @@ extension UserPatterns on User {
 
   @optionalTypeArgs
   TResult when<TResult extends Object?>(
-    TResult Function(String? id, String name, String phoneNumber) $default,
-  ) {
+    TResult Function(String? id, String name, String phoneNumber) $default, {
+    required TResult Function() anonymous,
+  }) {
     final _that = this;
     switch (_that) {
-      case _User():
+      case RegularUser():
         return $default(_that.id, _that.name, _that.phoneNumber);
+      case AnonymousUser():
+        return anonymous();
     }
   }
 
@@ -212,12 +180,15 @@ extension UserPatterns on User {
 
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>(
-    TResult? Function(String? id, String name, String phoneNumber)? $default,
-  ) {
+    TResult? Function(String? id, String name, String phoneNumber)? $default, {
+    TResult? Function()? anonymous,
+  }) {
     final _that = this;
     switch (_that) {
-      case _User() when $default != null:
+      case RegularUser() when $default != null:
         return $default(_that.id, _that.name, _that.phoneNumber);
+      case AnonymousUser() when anonymous != null:
+        return anonymous();
       case _:
         return null;
     }
@@ -226,24 +197,20 @@ extension UserPatterns on User {
 
 /// @nodoc
 
-class _User extends User {
-  _User({this.id, this.name = '', required this.phoneNumber}) : super._();
+class RegularUser extends User {
+  RegularUser({this.id, this.name = '', required this.phoneNumber}) : super._();
 
-  @override
   final String? id;
-  @override
   @JsonKey()
   final String name;
-  @override
   final String phoneNumber;
 
   /// Create a copy of User
   /// with the given fields replaced by the non-null parameter values.
-  @override
   @JsonKey(includeFromJson: false, includeToJson: false)
   @pragma('vm:prefer-inline')
-  _$UserCopyWith<_User> get copyWith =>
-      __$UserCopyWithImpl<_User>(this, _$identity);
+  $RegularUserCopyWith<RegularUser> get copyWith =>
+      _$RegularUserCopyWithImpl<RegularUser>(this, _$identity);
 
   @override
   String toString() {
@@ -252,24 +219,24 @@ class _User extends User {
 }
 
 /// @nodoc
-abstract mixin class _$UserCopyWith<$Res> implements $UserCopyWith<$Res> {
-  factory _$UserCopyWith(_User value, $Res Function(_User) _then) =
-      __$UserCopyWithImpl;
-  @override
+abstract mixin class $RegularUserCopyWith<$Res> implements $UserCopyWith<$Res> {
+  factory $RegularUserCopyWith(
+    RegularUser value,
+    $Res Function(RegularUser) _then,
+  ) = _$RegularUserCopyWithImpl;
   @useResult
   $Res call({String? id, String name, String phoneNumber});
 }
 
 /// @nodoc
-class __$UserCopyWithImpl<$Res> implements _$UserCopyWith<$Res> {
-  __$UserCopyWithImpl(this._self, this._then);
+class _$RegularUserCopyWithImpl<$Res> implements $RegularUserCopyWith<$Res> {
+  _$RegularUserCopyWithImpl(this._self, this._then);
 
-  final _User _self;
-  final $Res Function(_User) _then;
+  final RegularUser _self;
+  final $Res Function(RegularUser) _then;
 
   /// Create a copy of User
   /// with the given fields replaced by the non-null parameter values.
-  @override
   @pragma('vm:prefer-inline')
   $Res call({
     Object? id = freezed,
@@ -277,7 +244,7 @@ class __$UserCopyWithImpl<$Res> implements _$UserCopyWith<$Res> {
     Object? phoneNumber = null,
   }) {
     return _then(
-      _User(
+      RegularUser(
         id: freezed == id
             ? _self.id
             : id // ignore: cast_nullable_to_non_nullable
@@ -293,4 +260,29 @@ class __$UserCopyWithImpl<$Res> implements _$UserCopyWith<$Res> {
       ),
     );
   }
+}
+
+/// @nodoc
+
+class AnonymousUser extends User {
+  AnonymousUser() : super._();
+
+  @override
+  String toString() {
+    return 'User.anonymous()';
+  }
+}
+
+/// @nodoc
+class $AnonymousUserCopyWith<$Res> implements $UserCopyWith<$Res> {
+  $AnonymousUserCopyWith(AnonymousUser _, $Res Function(AnonymousUser) __);
+}
+
+/// @nodoc
+class _$AnonymousUserCopyWithImpl<$Res>
+    implements $AnonymousUserCopyWith<$Res> {
+  _$AnonymousUserCopyWithImpl(this._self, this._then);
+
+  final AnonymousUser _self;
+  final $Res Function(AnonymousUser) _then;
 }

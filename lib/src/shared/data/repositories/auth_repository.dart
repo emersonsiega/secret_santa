@@ -41,13 +41,19 @@ class AuthRepository extends _$AuthRepository implements IAuthRepository {
   }
 
   @override
+  Future<Either<AsyncRequestFailure, void>> registerAnonymousUser(User user) async {
+    state = AsyncData(user);
+    return right();
+  }
+
+  @override
   Future<Either<AsyncRequestFailure, void>> createAccount(User user) async {
     try {
       await _client.account.createPhoneToken(
         userId: user.buildUniqueId,
         phone: user.rawPhoneNumber,
       );
-      return null.right();
+      return right();
     } catch (e) {
       logger.e('Failed to create account', error: e);
 
@@ -64,7 +70,7 @@ class AuthRepository extends _$AuthRepository implements IAuthRepository {
         userId: user.buildUniqueId,
         phone: user.rawPhoneNumber,
       );
-      return null.right();
+      return right();
     } catch (e) {
       logger.e('Failed to create phone token', error: e);
 
@@ -93,9 +99,9 @@ class AuthRepository extends _$AuthRepository implements IAuthRepository {
   @override
   Future<Either<AsyncRequestFailure, void>> logout() async {
     try {
-      await _client.account.deleteSession(sessionId: 'current');
       state = AsyncValue.data(null);
-      return null.right();
+      await _client.account.deleteSession(sessionId: 'current');
+      return right();
     } catch (e) {
       logger.e('Failed to log out', error: e);
       if (e is appwrite.AppwriteException) return Left(e.toEntity());
@@ -106,15 +112,19 @@ class AuthRepository extends _$AuthRepository implements IAuthRepository {
 
   @override
   Future<Either<AsyncRequestFailure, void>> updateName(User user) async {
-    try {
-      final currentUser = await _client.account.updateName(name: user.name);
-      final entity = UserModel.fromJson(currentUser.toMap()).toEntity();
-      state = AsyncData(entity);
-      return entity.right();
-    } catch (e) {
-      if (e is appwrite.AppwriteException) return Left(e.toEntity());
+    if (user case RegularUser()) {
+      try {
+        final currentUser = await _client.account.updateName(name: user.name);
+        final entity = UserModel.fromJson(currentUser.toMap()).toEntity();
+        state = AsyncData(entity);
+        return entity.right();
+      } catch (e) {
+        if (e is appwrite.AppwriteException) return Left(e.toEntity());
 
-      return Left(AsyncRequestFailure.unknown());
+        return Left(AsyncRequestFailure.unknown());
+      }
     }
+
+    throw ArgumentError('Function expects RegularUser object');
   }
 }

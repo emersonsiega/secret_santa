@@ -14,6 +14,7 @@ import 'package:secret_santa/src/features/onboarding/presentation/screens/onboar
 import 'package:secret_santa/src/features/onboarding/presentation/widgets/large_elevated_button.dart';
 import 'package:secret_santa/src/features/onboarding/presentation/widgets/large_text_button.dart';
 import 'package:secret_santa/src/features/onboarding/presentation/widgets/step_indicator.dart';
+import 'package:secret_santa/src/shared/domain/entities/auth/user.dart';
 import 'package:secret_santa/src/shared/domain/failures/async_request_failure.dart';
 import 'package:secret_santa/src/shared/infra/logger/logger.dart';
 import 'package:secret_santa/src/shared/presentation/design_system/colors.dart';
